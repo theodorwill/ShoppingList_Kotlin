@@ -11,24 +11,6 @@
     android:background="#FF637949"
     tools:context="com.example.cba.shoppinglist.Home">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="263dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        style="@android:style/Widget.DeviceDefault.Light.ScrollView"
-        android:scrollbarStyle="outsideOverlay"
-        android:id="@+id/home_scrollList"
-        android:fillViewport="true"
-        android:clipToPadding="false">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
-
     <Button
         android:text="@string/create_new_list"
         android:layout_width="wrap_content"
@@ -50,5 +32,27 @@
         android:layout_marginBottom="67dp"
         android:layout_above="@+id/button"
         android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/button"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="186dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="12dp"
+        style="@android:style/Widget.DeviceDefault.Light.ScrollView"
+        android:scrollbarStyle="outsideOverlay"
+        android:id="@+id/home_scrollList"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:layout_below="@+id/button"
+        android:layout_alignParentStart="true">
+
+    </ScrollView>
 
 </RelativeLayout>
