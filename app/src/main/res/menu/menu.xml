@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id=""
+        android:id="@+id/placeholder1"
         android:icon="@drawable/ic_search"
         android:title=""
         app:showAsAction="always"/>
     <item
-        android:id=""
+        android:id="@+id/placeholder2"
         android:icon="@drawable/ic_action_add"
         android:title=""
         app:showAsAction="always" />
