@@ -4,4 +4,11 @@
     <string name="create_new_list">Create new list.</string>
     <string name="list_title">Title</string>
     <string name="list_values">Add to your list here</string>
+    <string name="list_name">List Name:</string>
+    <string name="name">Name</string>
+    <string name="create_list">Create list</string>
+    <string name="name_in">Name:</string>
+    <string name="create">Create</string>
+    <string name="success_create_list_msg">List Created</string>
+    <string name="error_create_list_msg">Please enter a name</string>
 </resources>

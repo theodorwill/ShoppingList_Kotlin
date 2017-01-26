@@ -4,19 +4,9 @@
     android:layout_height="match_parent"
     android:padding="10dp">
 
-    <EditText
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/title"
-        android:inputType="text"
-        android:hint="@string/list_title" />
+        android:id="@+id/sort" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/groceries"
-        android:hint="@string/list_values" />
 </LinearLayout>
