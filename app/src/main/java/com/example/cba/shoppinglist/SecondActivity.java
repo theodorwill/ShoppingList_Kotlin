@@ -10,7 +10,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-        setTitle("Add list");
+        setTitle("Your list"); //sätter titel i appbaren, antar att vi ska ha själva listans namn här
     }
 
     //Lägger till ikonerna i appbaren för denna activity
