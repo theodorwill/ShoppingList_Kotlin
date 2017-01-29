@@ -11,6 +11,7 @@
     <string name="create">Create</string>
     <string name="success_create_list_msg">List Created</string>
     <string name="error_create_list_msg">Please enter a name</string>
+    <string name="error_create_item_msg">Please enter a name</string>
     <string name="create_item">Create item</string>
     <string name="create2">Create</string>
     <string name="name2">name</string>
