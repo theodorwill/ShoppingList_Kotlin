@@ -2,11 +2,11 @@
 <resources>
 
     <style name="ShoppingListTheme" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/colorAccent</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorStatusBar</item>
+        <item name="colorPrimaryDark">@android:color/holo_green_dark</item>
         <item name="colorAccent">@color/colorPrimaryDark</item>
-        <item name="android:textColorPrimary">@android:color/darker_gray</item>
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/colorAccent</item>
         <item name="android:textColorSecondary">@android:color/background_light</item>
         <item name="android:textColorPrimaryInverse">@android:color/darker_gray</item>
         <item name="android:textColorSecondaryInverse">@android:color/black</item>
