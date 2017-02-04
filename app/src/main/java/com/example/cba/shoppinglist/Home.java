@@ -36,7 +36,7 @@ public class Home extends AppCompatActivity {
     }
 
     //Start of Create List popup
-    public void showCreateListDialog(View view){
+    public void showCreateListDialog(View view) {
 
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(Home.this);
         View mView = getLayoutInflater().inflate(R.layout.dialog_create_list, null);
@@ -50,7 +50,7 @@ public class Home extends AppCompatActivity {
         mCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!mCreateList.getText().toString().isEmpty()){
+                if (!mCreateList.getText().toString().isEmpty()) {
 
                     dbHandler.createList(mCreateList.getText().toString());
                     dialog.dismiss();
@@ -60,7 +60,7 @@ public class Home extends AppCompatActivity {
 
                     updateListCollection();
 
-                }else{
+                } else {
                     Toast.makeText(Home.this,
                             R.string.error_create_list_msg,
                             Toast.LENGTH_SHORT).show();
@@ -77,7 +77,7 @@ public class Home extends AppCompatActivity {
     så att beroende på vilken lista du klickar på, tas du till SecondActivity.
     En sträng med titeln skickas med och rätt titel sätts i nästa screen.
      */
-    public void updateListCollection(){
+    public void updateListCollection() {
         titleList = new ArrayList<>();
         SQLiteDatabase db = dbHandler.getReadableDatabase();
         Cursor cursor = db.query(true, DatabaseContract.DatabaseEntry.TABLE,  //true = tar ej duplicates
@@ -103,8 +103,7 @@ public class Home extends AppCompatActivity {
         cursor.close();
         db.close();
 
-        mListTitleView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
+        mListTitleView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {

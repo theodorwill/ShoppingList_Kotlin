@@ -44,7 +44,7 @@ public class SecondActivity extends AppCompatActivity {
 
     //Lägger till ikonerna i appbaren för denna activity
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
@@ -66,7 +66,7 @@ public class SecondActivity extends AppCompatActivity {
             mAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(!mItemName.getText().toString().isEmpty()){
+                    if (!mItemName.getText().toString().isEmpty()) {
 
                         //här anropar vi addItem metoden, lägger till datan i db
                         //Vi tar in strängen från dialog rutan(mItemName)
@@ -74,21 +74,20 @@ public class SecondActivity extends AppCompatActivity {
                         dialog.dismiss();
                         updateItemView();
 
-                    }else{
+                    } else {
                         Toast.makeText(SecondActivity.this,
                                 R.string.error_create_item_msg,
                                 Toast.LENGTH_SHORT).show();
                     }
                 }
             });
-        }
-
-        else {
+        } else {
             //gör inget i guess
         }
 
         return true;
     }
+
     /*
     Metod för att hämta in alla items för listan från databasen.
     Det kommer finnas något NULL värde i tabellen, därför gör vi en check
@@ -96,7 +95,7 @@ public class SecondActivity extends AppCompatActivity {
 
     Via en Arrayadapter populerar vi vår listview
      */
-    public void updateItemView(){
+    public void updateItemView() {
         itemList = new ArrayList<>();
 
         SQLiteDatabase db = dbHandler.getReadableDatabase();
@@ -105,7 +104,7 @@ public class SecondActivity extends AppCompatActivity {
                 DatabaseContract.DatabaseEntry.COL_LIST_TITLE + " = ?",
                 new String[]{title}, null, null, null
         );
-        while(cursor.moveToNext()) {
+        while (cursor.moveToNext()) {
             int index = cursor.getColumnIndex(DatabaseContract.DatabaseEntry.COL_LIST_ITEM);
             if (cursor.isNull(index) != true) {
                 itemList.add(cursor.getString(index));
@@ -113,7 +112,7 @@ public class SecondActivity extends AppCompatActivity {
             }
         }
 
-        if(mAdapter1 == null){
+        if (mAdapter1 == null) {
             mAdapter1 = new ArrayAdapter<>(this,
                     R.layout.list_item_view,
                     R.id.list_item,

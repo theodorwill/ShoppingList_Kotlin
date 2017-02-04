@@ -31,8 +31,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.DatabaseEntry.TABLE);
         onCreate(db);
     }
+
     //Behöver lägga till en check här nere i metoden och se om titeln inte finns redan
-    public void createList(String title){
+    public void createList(String title) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -43,7 +44,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
 
     }
-    public void addItem(String list_item, String list_title){
+
+    public void addItem(String list_item, String list_title) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         ContentValues values = new ContentValues();
