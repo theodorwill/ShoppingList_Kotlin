@@ -10,7 +10,7 @@
         android:theme="@style/ShoppingListTheme">
         <activity
             android:name=".Home"
-            android:theme="@style/ShoppingListTheme.NoActionBar.Fullscreen">
+            android:theme="@style/ShoppingListTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
