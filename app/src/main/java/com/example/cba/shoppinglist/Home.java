@@ -110,8 +110,16 @@ public class Home extends AppCompatActivity {
                 Intent intent = new Intent(Home.this, SecondActivity.class);
                 intent.putExtra(EXTRA_MESSAGE, titleList.get(position));
                 startActivity(intent);
+
             }
         });
+    }
+
+    public void deleteListener(View view) {
+
+        int pos = mListTitleView.getPositionForView(view);
+        dbHandler.deleteList(titleList.get(pos));
+        updateListCollection();
     }
 
 }

@@ -12,15 +12,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="X" />
+        android:onClick="deleteListener"
+        android:text="X"
+        android:textSize="20sp"
+        android:layout_marginTop="5dp"
+        android:textColor="@android:color/holo_red_dark"
+        style="@android:style/Widget.DeviceDefault.Light.Button.Small" />
 
     <TextView
         android:id="@+id/list_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello"
+        android:text="title"
         android:textSize="20sp"
         android:paddingTop="15dp"
+        android:textColor="#FFFFFF"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

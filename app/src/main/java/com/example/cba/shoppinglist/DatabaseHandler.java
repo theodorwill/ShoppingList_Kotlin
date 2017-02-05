@@ -31,6 +31,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.DatabaseEntry.TABLE);
         onCreate(db);
     }
+    public void recreateTable(){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS lists");
+        onCreate(db);
+    }
 
     //Behöver lägga till en check här nere i metoden och se om titeln inte finns redan
     public void createList(String title) {
@@ -43,6 +49,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(DatabaseContract.DatabaseEntry.TABLE, null, values);
         db.close();
 
+    }
+
+    public void deleteList(String title){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete(DatabaseContract.DatabaseEntry.TABLE,
+                DatabaseContract.DatabaseEntry.COL_LIST_TITLE + " LIKE ?",
+                new String[] {title});
+
+        db.close();
     }
 
     public void addItem(String list_item, String list_title) {
