@@ -1,6 +1,7 @@
 package com.example.cba.shoppinglist;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -39,15 +40,43 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     //Behöver lägga till en check här nere i metoden och se om titeln inte finns redan
-    public void createList(String title) {
+    public boolean createList(String title) {
         SQLiteDatabase db = this.getWritableDatabase();
+        boolean exists = false;
 
-        ContentValues values = new ContentValues();
-        values.put(DatabaseContract.DatabaseEntry.COL_LIST_TITLE, title);
-        values.putNull(DatabaseContract.DatabaseEntry.COL_LIST_ITEM);
 
-        db.insert(DatabaseContract.DatabaseEntry.TABLE, null, values);
-        db.close();
+        // kolla om titeln redan finns
+        Cursor cursor = db.query(DatabaseContract.DatabaseEntry.TABLE,
+                new String[]{DatabaseContract.DatabaseEntry.COL_LIST_TITLE},
+                DatabaseContract.DatabaseEntry.COL_LIST_TITLE + " = ?",
+                new String[]{title}, null, null, null
+        );
+        while (cursor.moveToNext()) {
+            int index = cursor.getColumnIndex(DatabaseContract.DatabaseEntry.COL_LIST_TITLE);
+            if (cursor.getString(index).equalsIgnoreCase(title)) {
+                exists = true;
+                break;
+
+            }
+
+        }
+
+        if (!exists) {
+            // Skapa lista med titeln
+            ContentValues values = new ContentValues();
+            values.put(DatabaseContract.DatabaseEntry.COL_LIST_TITLE, title);
+            values.putNull(DatabaseContract.DatabaseEntry.COL_LIST_ITEM);
+
+            db.insert(DatabaseContract.DatabaseEntry.TABLE, null, values);
+            cursor.close();
+            db.close();
+        }
+        else {
+            cursor.close();
+            db.close();
+        }
+
+        return exists;
 
     }
 

@@ -50,15 +50,20 @@ public class Home extends AppCompatActivity {
         mCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!mCreateList.getText().toString().isEmpty()) {
+                String titleName = mCreateList.getText().toString();
+                if (!titleName.isEmpty()) {
 
-                    dbHandler.createList(mCreateList.getText().toString());
-                    dialog.dismiss();
-                    Toast.makeText(Home.this,
-                            "List created",
-                            Toast.LENGTH_SHORT).show();
+                    if (dbHandler.createList(titleName) == false) {
+                        dialog.dismiss();
+                        Toast.makeText(Home.this,
+                                "List created",
+                                Toast.LENGTH_SHORT).show();
 
-                    updateListCollection();
+                        updateListCollection();
+                    } else {
+                        Toast.makeText(Home.this, "List exists, try again", Toast.LENGTH_SHORT).show();
+                    }
+
 
                 } else {
                     Toast.makeText(Home.this,
