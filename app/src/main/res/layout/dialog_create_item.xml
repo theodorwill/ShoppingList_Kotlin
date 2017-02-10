@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp">
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:weightSum="1">
 
     <TextView
         android:text="@string/addItem"
@@ -11,7 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
         android:textSize="25sp"
         android:id="@+id/itemNameText" />
 
@@ -20,15 +22,55 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="60dp"
         android:hint="@string/name2"
         android:id="@+id/etItemName" />
+
 
     <Button
         android:text="@string/add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:id="@+id/buttonAdd" />
+        android:layout_marginTop="200dp"
+        android:id="@+id/buttonAdd"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
-</LinearLayout>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/btn_red"
+        android:checked="false"
+        android:layout_gravity="left"
+        android:layout_marginTop="120dp"
+        android:id="@+id/check1"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/btn_green"
+        android:checked="false"
+        android:layout_marginTop="120dp"
+        android:layout_marginStart="90dp"
+        android:id="@+id/check2"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/btn_blue"
+        android:checked="false"
+        android:layout_marginTop="120dp"
+        android:layout_marginStart="179dp"
+        android:id="@+id/check3"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/btn_yellow"
+        android:checked="false"
+        android:layout_marginTop="120dp"
+        android:layout_marginStart="269dp"
+        android:id="@+id/check4"/>
+
+
+</RelativeLayout>
