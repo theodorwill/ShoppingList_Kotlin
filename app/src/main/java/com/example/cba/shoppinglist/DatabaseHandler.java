@@ -100,4 +100,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(DatabaseContract.DatabaseEntry.TABLE, null, values);
         db.close();
     }
+    public void deleteItem(String list_item, String list_title) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete(DatabaseContract.DatabaseEntry.TABLE,
+                DatabaseContract.DatabaseEntry.COL_LIST_ITEM + " LIKE ? AND " +
+                DatabaseContract.DatabaseEntry.COL_LIST_TITLE + " LIKE ? ",
+                new String[] {list_item, list_title});
+
+        db.close();
+    }
 }

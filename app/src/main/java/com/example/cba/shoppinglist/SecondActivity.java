@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,6 +41,16 @@ public class SecondActivity extends AppCompatActivity {
 
         //Anropar updateItemView() metoden när denna aktivitet skapas.
         updateItemView();
+
+        mListItemView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int pos, long id) {
+
+                dbHandler.deleteItem(itemList.get(pos), title);
+                updateItemView();
+                return true;
+            }
+        });
     }
 
     //Lägger till ikonerna i appbaren för denna activity
