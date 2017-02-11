@@ -36,41 +36,49 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
-    <CheckBox
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:button="@drawable/btn_red"
-        android:checked="false"
-        android:layout_gravity="left"
-        android:layout_marginTop="120dp"
-        android:id="@+id/check1"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/etItemName"
+        android:layout_centerHorizontal="true">
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:button="@drawable/btn_green"
-        android:checked="false"
-        android:layout_marginTop="120dp"
-        android:layout_marginStart="90dp"
-        android:id="@+id/check2"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/btn_yellow"
+            android:checked="false"
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:button="@drawable/btn_blue"
-        android:checked="false"
-        android:layout_marginTop="120dp"
-        android:layout_marginStart="179dp"
-        android:id="@+id/check3"/>
+            android:id="@+id/check4"
+             />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:button="@drawable/btn_yellow"
-        android:checked="false"
-        android:layout_marginTop="120dp"
-        android:layout_marginStart="269dp"
-        android:id="@+id/check4"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/btn_blue"
 
+            android:id="@+id/check3"
+            android:checked="false"
+             />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/btn_green"
+            android:checked="false"
+
+            android:id="@+id/check2"
+             />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/btn_red"
+
+            android:id="@+id/check1"
+            android:checked="false"
+             />
+    </RadioGroup>
 
 </RelativeLayout>
