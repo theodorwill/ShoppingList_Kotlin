@@ -22,9 +22,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + DatabaseContract.DatabaseEntry.TABLE + " ( " +
                 DatabaseContract.DatabaseEntry.COL_LIST_ITEM + " TEXT, " +
+                DatabaseContract.DatabaseEntry.COL_LIST_COLOR + " TEXT, " +
                 DatabaseContract.DatabaseEntry.COL_LIST_TITLE + " TEXT NOT NULL);";
 
         db.execSQL(createTable);
+
     }
 
     @Override

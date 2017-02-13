@@ -30,6 +30,8 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         mListItemView = (ListView) findViewById(R.id.list_show_items); //kopplar vår ListView här
         dbHandler = new DatabaseHandler(this); //nytt objekt av databasehandler som vi kommer använda
 
@@ -92,8 +94,10 @@ public class SecondActivity extends AppCompatActivity {
                     }
                 }
             });
-        } else {
-            //gör inget i guess
+        }
+        if(item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
 
         return true;

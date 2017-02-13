@@ -16,5 +16,6 @@ public class DatabaseContract {
 
         public static final String COL_LIST_TITLE = "title";
         public static final String COL_LIST_ITEM = "item";
+        public static final String COL_LIST_COLOR = "color";
     }
 }
