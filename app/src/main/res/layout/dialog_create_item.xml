@@ -40,6 +40,7 @@
             android:button="@drawable/btn_red"
             android:checked="false"
             android:id="@+id/radio1"
+            android:onClick="onRadioButtonClicked"
             android:paddingLeft="5dp"/>
 
         <RadioButton
@@ -48,6 +49,7 @@
             android:button="@drawable/btn_green"
             android:id="@+id/radio2"
             android:checked="false"
+            android:onClick="onRadioButtonClicked"
             android:paddingLeft="5dp"/>
 
         <RadioButton
@@ -55,6 +57,7 @@
             android:layout_height="wrap_content"
             android:button="@drawable/btn_blue"
             android:checked="false"
+            android:onClick="onRadioButtonClicked"
             android:id="@+id/radio3"
             android:paddingLeft="5dp"/>
 
@@ -63,6 +66,7 @@
             android:layout_height="wrap_content"
             android:button="@drawable/btn_yellow"
             android:id="@+id/radio4"
+            android:onClick="onRadioButtonClicked"
             android:checked="false"
             android:paddingLeft="5dp"/>
     </RadioGroup>

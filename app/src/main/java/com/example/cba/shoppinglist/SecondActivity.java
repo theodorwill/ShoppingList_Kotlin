@@ -2,34 +2,46 @@ package com.example.cba.shoppinglist;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class SecondActivity extends AppCompatActivity {
-    private ArrayAdapter<String> mAdapter1;
+    private ListItemAdapter mAdapter1;
     private DatabaseHandler dbHandler;
     private ListView mListItemView;
     private ArrayList<String> itemList;
     private String title;
+    // String variabel för createItem dialogrutan för färgvärdet.
+    private String color;
+    // ArrayList för färgvärdena som hämtas ut från db
+    private ArrayList<String> colors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        // Tillbaka knapp i Actionbar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mListItemView = (ListView) findViewById(R.id.list_show_items); //kopplar vår ListView här
@@ -41,7 +53,6 @@ public class SecondActivity extends AppCompatActivity {
         title = intent.getStringExtra(Home.EXTRA_MESSAGE);
         setTitle(title);
 
-        //Anropar updateItemView() metoden när denna aktivitet skapas.
         updateItemView();
 
         mListItemView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -62,6 +73,35 @@ public class SecondActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+
+    /*
+    Sätter color variabeln beroende på vilken radiobutton som är vald
+    i createItem dialogrutan, så att det kan passeras in i
+    db
+     */
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+
+        switch(view.getId()) {
+            case R.id.radio1:
+                if (checked)
+                    color = "#F74A48";
+                    break;
+            case R.id.radio2:
+                if (checked)
+                    color = "#50F75C";
+                    break;
+            case R.id.radio3:
+                if (checked)
+                    color = "#3C4CF7";
+                    break;
+            case R.id.radio4:
+                if (checked)
+                    color = "#F7E652";
+                    break;
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -76,6 +116,10 @@ public class SecondActivity extends AppCompatActivity {
             final AlertDialog dialog = mBuilder.create();
             dialog.show();
 
+            // Sätt color variabeln till default white för item
+            color = "#FFFFFF";
+
+
             mAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -83,7 +127,7 @@ public class SecondActivity extends AppCompatActivity {
 
                         //här anropar vi addItem metoden, lägger till datan i db
                         //Vi tar in strängen från dialog rutan(mItemName)
-                        dbHandler.addItem(mItemName.getText().toString(), title);
+                        dbHandler.addItem(mItemName.getText().toString(), title, color);
                         dialog.dismiss();
                         updateItemView();
 
@@ -112,32 +156,26 @@ public class SecondActivity extends AppCompatActivity {
      */
     public void updateItemView() {
         itemList = new ArrayList<>();
+        colors = new ArrayList<>();
 
         SQLiteDatabase db = dbHandler.getReadableDatabase();
         Cursor cursor = db.query(DatabaseContract.DatabaseEntry.TABLE,
-                new String[]{DatabaseContract.DatabaseEntry.COL_LIST_TITLE, DatabaseContract.DatabaseEntry.COL_LIST_ITEM},
+                new String[]{DatabaseContract.DatabaseEntry.COL_LIST_TITLE, DatabaseContract.DatabaseEntry.COL_LIST_ITEM,
+                DatabaseContract.DatabaseEntry.COL_LIST_COLOR},
                 DatabaseContract.DatabaseEntry.COL_LIST_TITLE + " = ?",
                 new String[]{title}, null, null, null
         );
         while (cursor.moveToNext()) {
             int index = cursor.getColumnIndex(DatabaseContract.DatabaseEntry.COL_LIST_ITEM);
+            int index2 = cursor.getColumnIndex(DatabaseContract.DatabaseEntry.COL_LIST_COLOR);
             if (cursor.isNull(index) != true) {
                 itemList.add(cursor.getString(index));
-
+                colors.add(cursor.getString(index2));
             }
         }
 
-        if (mAdapter1 == null) {
-            mAdapter1 = new ArrayAdapter<>(this,
-                    R.layout.list_item_view,
-                    R.id.list_item,
-                    itemList);
-            mListItemView.setAdapter(mAdapter1);
-        } else {
-            mAdapter1.clear();
-            mAdapter1.addAll(itemList);
-            mAdapter1.notifyDataSetChanged();
-        }
+        mAdapter1 = new ListItemAdapter(this, itemList, colors);
+        mListItemView.setAdapter(mAdapter1);
 
         cursor.close();
         db.close();

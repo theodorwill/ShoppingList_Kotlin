@@ -22,7 +22,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + DatabaseContract.DatabaseEntry.TABLE + " ( " +
                 DatabaseContract.DatabaseEntry.COL_LIST_ITEM + " TEXT, " +
-                DatabaseContract.DatabaseEntry.COL_LIST_COLOR + " TEXT, " +
+                DatabaseContract.DatabaseEntry.COL_LIST_COLOR + " TEXT DEFAULT '#FFFFFF', " +
                 DatabaseContract.DatabaseEntry.COL_LIST_TITLE + " TEXT NOT NULL);";
 
         db.execSQL(createTable);
@@ -92,12 +92,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void addItem(String list_item, String list_title) {
+    public void addItem(String list_item, String list_title, String color) {
         SQLiteDatabase db = this.getReadableDatabase();
+
 
         ContentValues values = new ContentValues();
         values.put(DatabaseContract.DatabaseEntry.COL_LIST_TITLE, list_title);
         values.put(DatabaseContract.DatabaseEntry.COL_LIST_ITEM, list_item);
+        values.put(DatabaseContract.DatabaseEntry.COL_LIST_COLOR, color);
 
         db.insert(DatabaseContract.DatabaseEntry.TABLE, null, values);
         db.close();
