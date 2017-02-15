@@ -14,6 +14,7 @@
         android:layout_alignParentRight="true"
         android:onClick="deleteListener"
         android:text="X"
+        android:background="@null"
         android:textSize="20sp"
         android:layout_marginTop="5dp"
         android:textColor="@android:color/holo_red_dark"
