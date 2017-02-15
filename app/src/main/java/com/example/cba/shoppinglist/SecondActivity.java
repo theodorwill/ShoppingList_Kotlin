@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -85,20 +86,33 @@ public class SecondActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.radio1:
                 if (checked)
-                    color = "#F74A48";
+                    color = "#ac4b4b";
                     break;
             case R.id.radio2:
                 if (checked)
-                    color = "#50F75C";
+                    color = "#4fac4b";
                     break;
             case R.id.radio3:
                 if (checked)
-                    color = "#3C4CF7";
+                    color = "#4b80ac";
                     break;
             case R.id.radio4:
                 if (checked)
-                    color = "#F7E652";
+                    color = "#bfbf45";
                     break;
+        }
+    }
+
+
+    public void onCheckBoxClicked (View view) {
+        boolean checked = ((CheckBox) view).isChecked();
+
+        switch(view.getId()) {
+            case R.id.checkBox:
+                if (checked)
+                    color = "#53565b";
+                    break;
+
         }
     }
 
