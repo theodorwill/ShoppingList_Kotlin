@@ -36,6 +36,7 @@ public class SecondActivity extends AppCompatActivity {
     private String color;
     // ArrayList för färgvärdena som hämtas ut från db
     private ArrayList<String> colors;
+    private String order = "noSort";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +62,7 @@ public class SecondActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int pos, long id) {
 
                 dbHandler.deleteItem(itemList.get(pos), title);
-                updateItemView("noSort");
+                updateItemView(order);
                 return true;
             }
         });
@@ -143,7 +144,7 @@ public class SecondActivity extends AppCompatActivity {
                         //Vi tar in strängen från dialog rutan(mItemName)
                         dbHandler.addItem(mItemName.getText().toString(), title, color);
                         dialog.dismiss();
-                        updateItemView("noSort");
+                        updateItemView(order);
 
                     } else {
                         Toast.makeText(SecondActivity.this,
@@ -160,13 +161,16 @@ public class SecondActivity extends AppCompatActivity {
         }
 
         if(item.getItemId() == R.id.menuSortByColor) {
-            updateItemView("color");
+            order = "color";
+            updateItemView(order);
         }
         if(item.getItemId() == R.id.menuSortASC) {
-            updateItemView("asc");
+            order = "asc";
+            updateItemView(order);
         }
         if(item.getItemId() == R.id.menuSortDESC) {
-            updateItemView("desc");
+            order = "desc";
+            updateItemView(order);
         }
 
         return true;
