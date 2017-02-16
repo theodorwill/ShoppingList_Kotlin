@@ -12,6 +12,24 @@
 
     <item
         android:id="@+id/action_add"
+        android:title="Add"
         android:icon="@drawable/ic_action_add"
         app:showAsAction="always" />
+
+    <item
+        android:icon="@drawable/ic_menu_sort"
+        android:title="Sort by"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/menuSortByColor"
+                android:title="Sort by color" />
+            <item
+                android:id="@+id/menuSortASC"
+                android:title="Sort by ascending" />
+            <item
+                android:id="@+id/menuSortDESC"
+                android:title="Sort by descending" />
+        </menu>
+    </item>
 </menu>

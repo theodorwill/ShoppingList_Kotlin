@@ -54,14 +54,14 @@ public class SecondActivity extends AppCompatActivity {
         title = intent.getStringExtra(Home.EXTRA_MESSAGE);
         setTitle(title);
 
-        updateItemView();
+        updateItemView("noSort");
 
         mListItemView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int pos, long id) {
 
                 dbHandler.deleteItem(itemList.get(pos), title);
-                updateItemView();
+                updateItemView("noSort");
                 return true;
             }
         });
@@ -143,7 +143,7 @@ public class SecondActivity extends AppCompatActivity {
                         //Vi tar in strängen från dialog rutan(mItemName)
                         dbHandler.addItem(mItemName.getText().toString(), title, color);
                         dialog.dismiss();
-                        updateItemView();
+                        updateItemView("noSort");
 
                     } else {
                         Toast.makeText(SecondActivity.this,
@@ -153,9 +153,20 @@ public class SecondActivity extends AppCompatActivity {
                 }
             });
         }
+
         if(item.getItemId() == android.R.id.home) {
             onBackPressed();
             return true;
+        }
+
+        if(item.getItemId() == R.id.menuSortByColor) {
+            updateItemView("color");
+        }
+        if(item.getItemId() == R.id.menuSortASC) {
+            updateItemView("asc");
+        }
+        if(item.getItemId() == R.id.menuSortDESC) {
+            updateItemView("desc");
         }
 
         return true;
@@ -168,16 +179,31 @@ public class SecondActivity extends AppCompatActivity {
 
     Via en Arrayadapter populerar vi vår listview
      */
-    public void updateItemView() {
+    public void updateItemView(String order) {
         itemList = new ArrayList<>();
         colors = new ArrayList<>();
+
+        String orderBy;
+
+        if(order == "color") {
+            orderBy = DatabaseContract.DatabaseEntry.COL_LIST_COLOR + " ASC";
+        }
+        else if(order == "asc") {
+            orderBy = DatabaseContract.DatabaseEntry.COL_LIST_ITEM + " ASC";
+        }
+        else if(order == "desc") {
+            orderBy = DatabaseContract.DatabaseEntry.COL_LIST_ITEM + " DESC";
+        }
+        else {
+            orderBy = null;
+        }
 
         SQLiteDatabase db = dbHandler.getReadableDatabase();
         Cursor cursor = db.query(DatabaseContract.DatabaseEntry.TABLE,
                 new String[]{DatabaseContract.DatabaseEntry.COL_LIST_TITLE, DatabaseContract.DatabaseEntry.COL_LIST_ITEM,
                 DatabaseContract.DatabaseEntry.COL_LIST_COLOR},
                 DatabaseContract.DatabaseEntry.COL_LIST_TITLE + " = ?",
-                new String[]{title}, null, null, null
+                new String[]{title}, null, null, orderBy
         );
         while (cursor.moveToNext()) {
             int index = cursor.getColumnIndex(DatabaseContract.DatabaseEntry.COL_LIST_ITEM);
