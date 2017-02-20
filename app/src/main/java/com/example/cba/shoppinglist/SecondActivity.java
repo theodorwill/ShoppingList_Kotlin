@@ -73,13 +73,13 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
                 View rowView = mListItemView.getChildAt(pos);
-                CheckBox cbox = (CheckBox) rowView.findViewById(R.id.checkBox);
+                CheckBox cBox = (CheckBox) rowView.findViewById(R.id.checkBox);
                 TextView itemTxt = (TextView) rowView.findViewById(R.id.list_item);
-                cbox.setChecked(true);
-                itemTxt.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                cBox.setChecked(true);
+                itemTxt.setTextColor(Color.parseColor("#757575"));
+                itemTxt.setBackgroundColor(Color.parseColor("#424242"));
             }
         });
-
     }
 
     //Lägger till ikonerna i appbaren för denna activity
@@ -88,7 +88,6 @@ public class SecondActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
 
     /*
     Sätter color variabeln beroende på vilken radiobutton som är vald
@@ -115,19 +114,6 @@ public class SecondActivity extends AppCompatActivity {
                 if (checked)
                     color = "#bfbf45";
                     break;
-        }
-    }
-
-
-    public void onCheckBoxClicked (View view) {
-        boolean checked = ((CheckBox) view).isChecked();
-
-        switch(view.getId()) {
-            case R.id.checkBox:
-                if (checked)
-                    color = "#53565b";
-                    break;
-
         }
     }
 
