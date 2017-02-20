@@ -25,6 +25,7 @@
         android:layout_alignBottom="@+id/list_item"
         android:onClick="onCheckBoxClicked"
         android:layout_marginEnd="15dp"
+        android:focusable="false"
         android:layout_alignParentEnd="true" />
 
 

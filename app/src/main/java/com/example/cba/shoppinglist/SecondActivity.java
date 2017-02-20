@@ -57,6 +57,7 @@ public class SecondActivity extends AppCompatActivity {
 
         updateItemView("noSort");
 
+        //Delete item on itemLongClick
         mListItemView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int pos, long id) {
@@ -66,6 +67,19 @@ public class SecondActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        //Markera item som klar onClick
+        mListItemView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                View rowView = mListItemView.getChildAt(pos);
+                CheckBox cbox = (CheckBox) rowView.findViewById(R.id.checkBox);
+                TextView itemTxt = (TextView) rowView.findViewById(R.id.list_item);
+                cbox.setChecked(true);
+                itemTxt.setBackgroundColor(Color.parseColor("#d3d3d3"));
+            }
+        });
+
     }
 
     //Lägger till ikonerna i appbaren för denna activity
@@ -131,7 +145,7 @@ public class SecondActivity extends AppCompatActivity {
             final AlertDialog dialog = mBuilder.create();
             dialog.show();
 
-            // Sätt color variabeln till default white för item
+            // Sätt color variabeln till default white för item om ingen färg är vald
             color = "#FFFFFF";
 
 
