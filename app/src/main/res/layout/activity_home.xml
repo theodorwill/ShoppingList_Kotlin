@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/create_list"
-        android:background="#7fc479"
+        android:background="#FF4CAF50"
         android:onClick="showCreateListDialog"
         android:textColor="#FFFFFF"
         android:layout_marginBottom="50dp"
