@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,10 +24,16 @@ public class Home extends AppCompatActivity {
     private ArrayList<String> titleList;
     public final static String EXTRA_MESSAGE = "com.example.cba.shoppinglist.MESSAGE";
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         mListTitleView = (ListView) findViewById(R.id.home_lv); //koppla listview till xml
         dbHandler = new DatabaseHandler(this);

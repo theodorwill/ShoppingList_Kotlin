@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:textColor="#FFFFFF">
 
     <!-- Kommenterar ut denna search icon då vi inte behöver den möjligtvis?
     <item
@@ -11,13 +12,19 @@
     -->
 
     <item
+        android:id="@+id/action_back"
+        android:title="Back"
+        android:icon="@drawable/ic_arrow_back"
+        app:showAsAction="always"/>
+
+    <item
         android:id="@+id/action_add"
         android:title="Add"
         android:icon="@drawable/ic_action_add"
         app:showAsAction="always" />
 
     <item
-        android:icon="@drawable/ic_menu_sort"
+        android:icon="@drawable/ic_sort"
         android:title="Sort by"
         app:showAsAction="ifRoom">
         <menu>
