@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:textColor="#FFFFFF">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Kommenterar ut denna search icon då vi inte behöver den möjligtvis?
     <item
@@ -10,12 +9,6 @@
         android:title=""
         app:showAsAction="always"/>
     -->
-
-    <item
-        android:id="@+id/action_back"
-        android:title="Back"
-        android:icon="@drawable/ic_arrow_back"
-        app:showAsAction="always"/>
 
     <item
         android:id="@+id/action_add"
@@ -30,13 +23,13 @@
         <menu>
             <item
                 android:id="@+id/menuSortByColor"
-                android:title="Sort by color" />
+                android:title="Sort by color"/>
             <item
                 android:id="@+id/menuSortASC"
-                android:title="Sort by ascending" />
+                android:title="Sort by ascending"/>
             <item
                 android:id="@+id/menuSortDESC"
-                android:title="Sort by descending" />
+                android:title="Sort by descending"/>
         </menu>
     </item>
 </menu>
