@@ -107,19 +107,19 @@ public class SecondActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.radio1:
                 if (checked)
-                    color = "#ef5350";
+                    color = "#f48282";
                     break;
             case R.id.radio2:
                 if (checked)
-                    color = "#66bb6a";
+                    color = "#6ed085";
                     break;
             case R.id.radio3:
                 if (checked)
-                    color = "#42a5f5";
+                    color = "#5fbae6";
                     break;
             case R.id.radio4:
                 if (checked)
-                    color = "#ffee58";
+                    color = "#f3bf83";
                     break;
         }
     }
