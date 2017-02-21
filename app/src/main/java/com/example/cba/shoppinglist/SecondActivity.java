@@ -2,7 +2,6 @@ package com.example.cba.shoppinglist;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
@@ -12,9 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -24,13 +21,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class SecondActivity extends AppCompatActivity {
     private ListItemAdapter mAdapter1;
     private DatabaseHandler dbHandler;
     private ListView mListItemView;
     private ArrayList<String> itemList;
+    //Titel från Home Activity hämtas in till denna String.
     private String title;
     // String variabel för createItem dialogrutan för färgvärdet.
     private String color;
@@ -47,7 +44,7 @@ public class SecondActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mListItemView = (ListView) findViewById(R.id.list_show_items); //kopplar vår ListView här
-        dbHandler = new DatabaseHandler(this); //nytt objekt av databasehandler som vi kommer använda
+        dbHandler = new DatabaseHandler(this);
 
         // Här tar vi emot ett intent från MainActivity med titeln på listan
         // beroende på vilken man tryckt på och sätter titeln här i appbaren.
@@ -124,6 +121,7 @@ public class SecondActivity extends AppCompatActivity {
         }
     }
 
+    //Hantering av ActionBar ikonerna/meny valen
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -140,7 +138,6 @@ public class SecondActivity extends AppCompatActivity {
 
             // Sätt color variabeln till default white för item om ingen färg är vald
             color = "#FFFFFF";
-
 
             mAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -188,7 +185,9 @@ public class SecondActivity extends AppCompatActivity {
     Det kommer finnas något NULL värde i tabellen, därför gör vi en check
     och lägger bara till items i ArrayListen om raden innehåller ett värde.
 
-    Via en Arrayadapter populerar vi vår listview
+    Via en custom Arrayadapter populerar vi vår listview,
+    som även sätter färger på alla items.
+    Metoden kräver ett argument för sortering av datan som visas.
      */
     public void updateItemView(String order) {
         itemList = new ArrayList<>();

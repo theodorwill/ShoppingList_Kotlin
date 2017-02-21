@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 /*
 Klass som ärver sqlite standard klassen, här skapas databasen och metoder för att
-skapa/lägga till data finns här
+skapa/lägga till/modifiera data finns här
  */
 
 public class DatabaseHandler extends SQLiteOpenHelper {
@@ -34,6 +34,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.DatabaseEntry.TABLE);
         onCreate(db);
     }
+
+    //Metod för test-syfte endast, skapar om tabellen
     public void recreateTable(){
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -41,18 +43,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    //Behöver lägga till en check här nere i metoden och se om titeln inte finns redan
+    //Metod för att skapa listorna, kollar även om titeln redan existerar
     public boolean createList(String title) {
         SQLiteDatabase db = this.getWritableDatabase();
         boolean exists = false;
 
-
-        // kolla om titeln redan finns
         Cursor cursor = db.query(DatabaseContract.DatabaseEntry.TABLE,
                 new String[]{DatabaseContract.DatabaseEntry.COL_LIST_TITLE},
                 DatabaseContract.DatabaseEntry.COL_LIST_TITLE + " = ?",
                 new String[]{title}, null, null, null
         );
+
+        // kolla om titeln redan finns
         while (cursor.moveToNext()) {
             int index = cursor.getColumnIndex(DatabaseContract.DatabaseEntry.COL_LIST_TITLE);
             if (cursor.getString(index).equalsIgnoreCase(title)) {

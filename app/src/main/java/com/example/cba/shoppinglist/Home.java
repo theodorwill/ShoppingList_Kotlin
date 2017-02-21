@@ -24,9 +24,6 @@ public class Home extends AppCompatActivity {
     private ArrayList<String> titleList;
     public final static String EXTRA_MESSAGE = "com.example.cba.shoppinglist.MESSAGE";
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,6 +124,7 @@ public class Home extends AppCompatActivity {
         });
     }
 
+    //onClick listener för delete list knapparna
     public void deleteListener(View view) {
 
         int pos = mListTitleView.getPositionForView(view);
