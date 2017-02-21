@@ -28,7 +28,8 @@
         android:text="@string/create"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#6B6B69"
+        android:background="#FF4CAF50"
+        android:textColor="#FFFFFF"
         android:layout_marginTop="10dp"
         android:id="@+id/create" />
 </LinearLayout>

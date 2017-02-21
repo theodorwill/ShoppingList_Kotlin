@@ -77,6 +77,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:id="@+id/buttonAdd"/>
+        android:id="@+id/buttonAdd"
+        android:background="#FF4CAF50"
+        android:textColor="#FFFFFF"/>
 
 </LinearLayout>
