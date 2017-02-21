@@ -75,9 +75,16 @@ public class SecondActivity extends AppCompatActivity {
                 View rowView = mListItemView.getChildAt(pos);
                 CheckBox cBox = (CheckBox) rowView.findViewById(R.id.checkBox);
                 TextView itemTxt = (TextView) rowView.findViewById(R.id.list_item);
-                cBox.setChecked(true);
-                itemTxt.setTextColor(Color.parseColor("#757575"));
-                itemTxt.setBackgroundColor(Color.parseColor("#424242"));
+
+                if(cBox.isChecked() != true) {
+                    cBox.setChecked(true);
+                    itemTxt.setTextColor(Color.parseColor("#757575"));
+                    itemTxt.setBackgroundColor(Color.parseColor("#424242"));
+                } else {
+                    cBox.setChecked(false);
+                    itemTxt.setTextColor(Color.parseColor("#212121"));
+                    itemTxt.setBackgroundColor(Color.parseColor(colors.get(pos)));
+                }
             }
         });
     }
